@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>为祖国拼图 - 省份问答游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>为祖国拼图</h1>
+        <p>点击地图上的省份，回答相关历史问题，点亮整个中国！</p>
+    </div>
+    <div id="map-container"></div>
+
+    <!-- 问题弹窗 -->
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="province-name">省份名称</h2>
+            <p id="question-text">这里是问题内容...</p>
+            <div id="options-container"></div>
+            <p id="feedback-text"></p>
+            <button id="close-button">关闭</button>
+        </div>
+    </div>
+
+    <!-- 新增：知识背景弹窗 -->
+    <div id="knowledge-modal" class="modal">
+        <div class="knowledge-content">
+            <h2 id="knowledge-title">知识背景</h2>
+            <img id="knowledge-image" src="" alt="知识背景图片">
+            <p id="knowledge-text">这里是相关的知识背景介绍...</p>
+            <button id="knowledge-close-button">继续拼图</button>
+        </div>
+    </div>
+
+    <!-- 引入必要的脚本 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
+    <script src="china.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
