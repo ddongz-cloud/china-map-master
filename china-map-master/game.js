@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const myChart = echarts.init(mapContainer);
         let litProvinces = [];
         const themeColors = { 
-            default: '#CECECE', hover: '#f0ad4e', lit: '#e6a23c', litHover: '#ebb563'
+            default: '#CECECE', hover: '#f0ad4e', lit: '#ffdf34', litHover: '#ebb563'
         };
 
         const mapOption = {
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', function () {
         function checkAnswer(selectedOption, correctAnswer, provinceName) {
             if (selectedOption === correctAnswer) {
                 feedbackTextEl.textContent = '回答正确！';
-                feedbackTextEl.style.color = 'green';
+                feedbackTextEl.style.color = '#f0ad4e';
                 lightUpProvince(provinceName); 
                 
                 setTimeout(() => {
                     questionModal.style.display = 'none';
                     showKnowledge(provinceName);
-                }, 800);
+                }, 400);
             } else {
                 feedbackTextEl.textContent = '回答错误，请再试一次！';
                 feedbackTextEl.style.color = 'red';
