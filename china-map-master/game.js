@@ -23,7 +23,45 @@ document.addEventListener('DOMContentLoaded', function () {
     // 2. 将所有游戏逻辑封装进一个主函数
     // 这个函数只会在 questions.json 成功加载后被调用
     function runGame(questionsData) {
-        
+
+        // =========================================================================
+        // 新增：弹幕生成逻辑
+        // =========================================================================
+        const danmakuContainer = document.getElementById('danmaku-container');
+        if (danmakuContainer) {
+            const danmakuTexts = [
+                "为祖国点亮地图！", "不忘初心", "牢记使命", "爱我中华", "繁荣昌盛", "国泰民安",
+                "红色精神", "砥砺前行", "百年征程", "星火燎原", "伟大复兴", "万众一心",
+                "团结奋斗", "历史是最好的教科书", "中国梦", "继往开来","民主科学", "解放全华北", 
+                "打破神话", "伟大实践", "工业崛起", "改革先声", "扭转战局", "和平解放", "祖国统一", 
+                "创建人民军队", "农村改革序幕", "改革开放试验田", "枪杆子里出政权", "一国两制的伟大构想", 
+                "结束不能造车的历史", "打响武装反抗第一枪", "台湾是中国不可分割的一部分","铁人精神"
+            ];
+            const danmakuColors = [
+                'rgba(192, 57, 43, 0.5)',  // 浅红色
+                'rgba(197, 162, 101, 0.6)', // 浅金色
+                'rgba(169, 169, 169, 0.5)'  // 浅灰色
+            ];
+            const totalDanmaku = 50; // 生成的弹幕总数
+
+            for (let i = 0; i < totalDanmaku; i++) {
+                const danmaku = document.createElement('div');
+                danmaku.classList.add('danmaku-item');
+
+                // 随机化属性
+                danmaku.textContent = danmakuTexts[Math.floor(Math.random() * danmakuTexts.length)];
+                danmaku.style.color = danmakuColors[Math.floor(Math.random() * danmakuColors.length)];
+                danmaku.style.top = `${Math.random() * 90 + 5}%`; // 随机垂直位置
+                danmaku.style.fontSize = `${Math.random() * 10 + 14}px`; // 14px到24px的随机字号
+                
+                // 随机化速度和初始延迟
+                danmaku.style.animationDuration = `${Math.random() * 10 + 15}s`; // 15到25秒的飞行时间
+                danmaku.style.animationDelay = `${Math.random() * 20}s`; // 0到20秒的随机延迟出现
+
+                danmakuContainer.appendChild(danmaku);
+            }
+        }
+
         // DOM 元素获取
         const mapContainer = document.getElementById('map-container');
         const questionModal = document.getElementById('question-modal');

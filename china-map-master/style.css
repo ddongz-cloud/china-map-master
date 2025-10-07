@@ -1,3 +1,49 @@
+/* ... (之前的 body, header, map-container 等样式保持不变) ... */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fdf6e3;
+    margin: 0;
+    /* overflow-x: hidden; 可选，防止意外的水平滚动条 */
+}
+
+/* 新增：弹幕容器样式 */
+#danmaku-container {
+    position: fixed; /* 固定在视窗中 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 关键：z-index为-1，使其位于所有正常内容（z-index: auto/0）的后面 */
+    z-index: -1;
+    overflow: hidden; /* 隐藏超出容器的弹幕 */
+}
+
+/* 新增：单个弹幕样式 */
+.danmaku-item {
+    position: absolute; /* 绝对定位于容器内 */
+    white-space: nowrap; /* 防止文字换行 */
+    user-select: none; /* 防止用户意外选中弹幕文字 */
+    /* 应用飞行动画 */
+    animation-name: moveLeftToRight;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+     animation-fill-mode: backwards;
+}
+
+/* 新增：弹幕飞行动画 */
+@keyframes moveLeftToRight {
+    from {
+        /* 从屏幕左侧外开始 */
+        transform: translateX(-100%);
+    }
+    to {
+        /* 移动到屏幕右侧外结束 */
+        transform: translateX(100vw); /* vw单位确保它飞出整个视窗宽度 */
+    }
+}
+
+
 /* ... (之前的 body, header, map-container, modal, modal-content 等样式保持不变) ... */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
